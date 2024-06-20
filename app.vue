@@ -8,7 +8,7 @@
             What Time Is It?
         </button>
       </NuxtLink>
-      <NuxtLink to="/api/hello" target="">
+      <NuxtLink to="/api/hello" target="_blank">
         <button>
             Link to API Route
         </button>
