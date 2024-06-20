@@ -4,6 +4,6 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
-    'api/swr': { swr: true },
+    'api/swr': { swr: 5 },
   }
 })
