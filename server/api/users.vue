@@ -10,17 +10,20 @@
   </template>
   
   <script setup>
-  import { ref, onMounted } from 'vue'
+  import { ref } from 'vue'
   import { useAsyncData } from '#app'
-  import axios from 'axios'
   
-  // Define a function to fetch the data from the API
+  // Function to fetch users from the API
   const fetchUsers = async () => {
-    const response = await axios.get('https://randomuser.me/api/?results=10')
-    return response.data.results
+    const response = await fetch('https://randomuser.me/api/?results=10')
+    if (!response.ok) {
+      throw new Error('Failed to fetch users')
+    }
+    const data = await response.json()
+    return data.results
   }
   
-  // Use the useAsyncData hook to fetch the data
+  // Using useAsyncData to fetch data on server-side
   const { data: users, error } = await useAsyncData('users', fetchUsers)
   
   if (error.value) {
