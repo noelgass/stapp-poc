@@ -19,7 +19,7 @@
             SWR
         </button>
       </NuxtLink>
-      <NuxtLink to="/api/users" target="_blank">
+      <NuxtLink to="/pages/users" target="_blank">
         <button>
             Users
         </button>
