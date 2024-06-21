@@ -1,30 +1,8 @@
-<script setup>
-import { ref } from 'vue'
-
-const users = ref([])
-
-async function fetchUsers() {
-  const response = await fetch('https://randomuser.me/api/?results=10')
-  const userJson = await response.json()
-  users.value = userJson.results
-}
-
-fetchUsers()
-</script>
 <template>
   <div>
     <div class="home-page">
       <h1>Hi! This is a simple Nuxt 3 app.</h1>
       <h2>Click on the buttons below to check out a server route or an API route :) </h2>
-      
-      <div>
-          <h1>Users</h1>
-          <ul>
-            <li v-for="user in users" :key="user.id">
-              {{ user.name.first }} {{ user.name.last }}
-            </li>
-          </ul>
-      </div>
 
       <NuxtLink to="/hello" target="_blank">
         <button> 
@@ -39,6 +17,11 @@ fetchUsers()
       <NuxtLink to="/api/swr" target="_blank">
         <button>
             SWR
+        </button>
+      </NuxtLink>
+      <NuxtLink to="/api/users" target="_blank">
+        <button>
+            Users
         </button>
       </NuxtLink>
       <h2> Deploy Nuxt 3 app with universal rendering on Azure Static Web Apps using <NuxtLink to="https://docs.microsoft.com/azure/static-web-apps/deploy-nuxtjs" class="styling">the Microsoft documentation</NuxtLink></h2>
