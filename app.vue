@@ -6,7 +6,7 @@ const users = ref([])
 async function fetchUsers() {
   const response = await fetch('https://randomuser.me/api/?results=10')
   const userJson = await response.json()
-  users.value = userJson.results
+  users.value = userJson
 }
 
 fetchUsers()
