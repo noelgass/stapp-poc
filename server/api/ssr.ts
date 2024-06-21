@@ -1,4 +1,4 @@
-<script setup>
+<script>
 import { ref } from 'vue'
 
 const users = ref([])
@@ -20,5 +20,5 @@ fetchUsers()
             {{ user.name }}
           </li>
         </ul>
-      </div>
+    </div>
 </template>
