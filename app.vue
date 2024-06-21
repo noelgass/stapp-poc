@@ -6,7 +6,7 @@ const users = ref([])
 async function fetchUsers() {
   const response = await fetch('https://randomuser.me/api/?results=10')
   const userJson = await response.json()
-  users.value = userJson
+  users.value = userJson.results
 }
 
 fetchUsers()
@@ -21,7 +21,7 @@ fetchUsers()
           <h1>Users</h1>
           <ul>
             <li v-for="user in users" :key="user.id">
-              {{ user.name }}
+              {{ user.name.first }} {{ user.name.last }}
             </li>
           </ul>
       </div>
