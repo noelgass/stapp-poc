@@ -5,6 +5,6 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     'api/swr': { swr: 5 },
-    'api/users': {ssr: true},
+    'api/users': {ssr: true}
   }
 })

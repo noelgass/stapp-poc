@@ -11,18 +11,19 @@
   
   <script setup>
   import { ref, onMounted } from 'vue'
+  import { useAsyncData } from '#app'
   import axios from 'axios'
   
-  // Define a reactive variable to store the users
-  const users = ref([])
+  // Define a function to fetch the data from the API
+  const fetchUsers = async () => {
+    const response = await axios.get('https://randomuser.me/api/?results=10')
+    return response.data.results
+  }
   
-  // Fetch the data from the API when the component is mounted
-  onMounted(async () => {
-    try {
-      const response = await axios.get('https://randomuser.me/api/?results=10')
-      users.value = response.data.results
-    } catch (error) {
-      console.error('Error fetching users:', error)
-    }
-  })
+  // Use the useAsyncData hook to fetch the data
+  const { data: users, error } = await useAsyncData('users', fetchUsers)
+  
+  if (error.value) {
+    console.error('Error fetching users:', error.value)
+  }
   </script>
