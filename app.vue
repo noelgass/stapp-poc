@@ -17,6 +17,15 @@ fetchUsers()
       <h1>Hi! This is a simple Nuxt 3 app.</h1>
       <h2>Click on the buttons below to check out a server route or an API route :) </h2>
       
+      <div>
+          <h1>Users</h1>
+          <ul>
+            <li v-for="user in users" :key="user.id">
+              {{ user.name }}
+            </li>
+          </ul>
+      </div>
+
       <NuxtLink to="/hello" target="_blank">
         <button> 
             What Time Is It?
@@ -30,11 +39,6 @@ fetchUsers()
       <NuxtLink to="/api/swr" target="_blank">
         <button>
             SWR
-        </button>
-      </NuxtLink>
-      <NuxtLink to="/api/ssr" target="_blank">
-        <button>
-            SSR
         </button>
       </NuxtLink>
       <h2> Deploy Nuxt 3 app with universal rendering on Azure Static Web Apps using <NuxtLink to="https://docs.microsoft.com/azure/static-web-apps/deploy-nuxtjs" class="styling">the Microsoft documentation</NuxtLink></h2>
