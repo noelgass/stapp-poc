@@ -4,9 +4,9 @@ import { ref } from 'vue'
 const users = ref([])
 
 async function fetchUsers() {
-  const response = await fetch('https://api.example.com/users')
+  const response = await fetch('https://randomuser.me/api/?results=10')
   const userJson = await response.json()
-  users.value = userJson
+  users.value = userJson.results
 }
 
 fetchUsers()
