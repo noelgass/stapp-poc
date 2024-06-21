@@ -1,8 +1,31 @@
+<script setup>
+import { ref } from 'vue'
+
+const users = ref([])
+
+async function fetchUsers() {
+  const response = await fetch('https://api.example.com/users')
+  const userJson = await response.json()
+  users.value = userJson
+}
+
+fetchUsers()
+</script>
 <template>
   <div>
     <div class="home-page">
       <h1>Hi! This is a simple Nuxt 3 app.</h1>
       <h2>Click on the buttons below to check out a server route or an API route :) </h2>
+      
+      <div>
+        <h1>Users</h1>
+        <ul>
+          <li v-for="user in users" :key="user.id">
+            {{ user.name }}
+          </li>
+        </ul>
+      </div>
+      
       <NuxtLink to="/hello" target="_blank">
         <button> 
             What Time Is It?
